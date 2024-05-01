@@ -3,11 +3,23 @@ import pluginJs from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
 import tseslint from "typescript-eslint";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
-
 import importPlugin from "eslint-plugin-import";
+import localRulesPlugin from "eslint-local";
 const compat = new FlatCompat();
 
 export default tseslint.config(
+  {
+    ignores: [
+      "node_modules",
+      ".cache",
+      "build",
+      "public/build",
+      ".env",
+      "!**/.server",
+      "!**/.client",
+      "eslint_local",
+    ],
+  },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
@@ -18,6 +30,7 @@ export default tseslint.config(
     plugins: {
       import: importPlugin,
       "typescript-eslint": tseslint,
+      "eslint-rules-plugin": localRulesPlugin,
     },
     extends: [
       ...tseslint.configs.recommended,
@@ -26,6 +39,7 @@ export default tseslint.config(
     ],
     rules: {
       "@typescript-eslint/no-unused-vars": ["off", {}],
+      "eslint-rules-plugin/no-default-error-type": "error",
     },
     settings: {
       "import/resolver": {

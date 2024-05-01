@@ -1,17 +1,17 @@
 import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
-const createRule = ESLintUtils.RuleCreator((name) => `https://example.com/rule/${name}`);
+
+const createRule = ESLintUtils.RuleCreator(
+    (name) => `https://example.com/rule/${name}`,
+);
+
 export default createRule({
     create(context) {
         return {
-            FunctionDeclaration(node) {
-                context.report({
-                    node: node,
-                    messageId: "defaulterror",
-                });
-            },
             NewExpression(node) {
-                if (node.callee.type == AST_NODE_TYPES.Identifier &&
-                    node.callee.name == "Error") {
+                if (
+                    node.callee.type == AST_NODE_TYPES.Identifier &&
+                    node.callee.name == "Error"
+                ) {
                     context.report({
                         node: node,
                         messageId: "defaulterror",

@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:eslint": "tsc -p eslint/tsconfig.json"
+    "build:eslint": "tsc -p eslint_local/tsconfig.json"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "@types/node": "^20.12.7",
     "@typescript-eslint/rule-tester": "^7.8.0",
     "eslint": "^8.57.0",
+    "eslint-local": "file:eslint_local",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react": "^7.34.1",
     "globals": "^15.1.0",
