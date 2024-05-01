@@ -1,6 +1,5 @@
 import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
-const createRule = ESLintUtils.RuleCreator((name) => `https://example.com/rule/${name}`);
-export default createRule({
+export default ESLintUtils.RuleCreator.withoutDocs({
     create(context) {
         return {
             NewExpression(node) {
@@ -24,6 +23,5 @@ export default createRule({
         },
         schema: [],
     },
-    name: "no-default-error-type",
     defaultOptions: [],
 });
