@@ -19,10 +19,10 @@ export default ESLintUtils.RuleCreator.withoutDocs({
     meta: {
         type: "problem",
         docs: {
-            description: "disallow the use of the `Omit` utility type",
+            description: "disallow the use of not inherited Error type",
         },
         messages: {
-            defaulterror: "The `Omit` utility type is forbidden",
+            defaulterror: "Not inherited Error type is forbidden",
         },
         schema: [],
     },
