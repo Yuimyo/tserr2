@@ -4,17 +4,19 @@ import rule from "./no-default-error-type.js";
 const ruleTester = new RuleTester();
 
 ruleTester.run("no-default-error-type", rule, {
-    valid: [
+  valid: [
+    {
+      code: 'throw new CustomError("hoge.");',
+    },
+  ],
+  invalid: [
+    {
+      code: 'throw new Error("hoge.");',
+      errors: [
         {
-            code: 'throw new CustomError("hoge.");',
+          messageId: "defaulterror",
         },
-    ],
-    invalid: [
-        {
-            code: 'throw new Error("hoge.");',
-            errors: [],
-        },
-    ],
+      ],
+    },
+  ],
 });
-
-console.log("All tests passed!");
