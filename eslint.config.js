@@ -30,16 +30,17 @@ export default tseslint.config(
     plugins: {
       import: importPlugin,
       "typescript-eslint": tseslint,
-      "eslint-rules-plugin": localRulesPlugin,
+      "local-rules": localRulesPlugin,
     },
     extends: [
       ...tseslint.configs.recommended,
       ...compat.config(importPlugin.configs.recommended),
       ...compat.config(importPlugin.configs.typescript),
+      ...localRulesPlugin.configs.all,
     ],
     rules: {
       "@typescript-eslint/no-unused-vars": ["off", {}],
-      "eslint-rules-plugin/no-default-error-type": "error",
+      // "@local-rules/no-default-error-type": "off",
     },
     settings: {
       "import/resolver": {
